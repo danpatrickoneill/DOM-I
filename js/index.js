@@ -52,7 +52,22 @@ const navLinks = document.querySelectorAll("a");
 navLinks.forEach(function(link, index) {
   link.textContent = siteContent.nav[`nav-item-${index + 1}`];
 });
-navLinks.forEach(link => link.style.color = "green")
+
+
+const homeLink = document.createElement("a")
+homeLink.textContent = "Home"
+homeLink.href = "index.html"
+nav = document.querySelector("nav")
+console.log(nav)
+nav.prepend(homeLink)
+
+const shopLink = document.createElement("a")
+shopLink.textContent = "Shop"
+shopLink.href = "#"
+nav.appendChild(shopLink)
+
+const newLinks = document.querySelectorAll("a");
+newLinks.forEach(link => link.style.color = "green")
 
 const headerOne = document.getElementsByTagName("h1");
 const headerText = headerOne[0];
