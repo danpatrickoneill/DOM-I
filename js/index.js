@@ -1,5 +1,5 @@
 const siteContent = {
-  "nav": {
+  nav: {
     "nav-item-1": "Services",
     "nav-item-2": "Product",
     "nav-item-3": "Vision",
@@ -8,53 +8,76 @@ const siteContent = {
     "nav-item-6": "Contact",
     "img-src": "img/logo.png"
   },
-  "cta": {
-    "h1": "DOM Is Awesome",
-    "button": "Get Started",
+  cta: {
+    h1: "DOM Is Awesome",
+    button: "Get Started",
     "img-src": "img/header-img.png"
   },
   "main-content": {
-    "features-h4":"Features",
-    "features-content": "Features content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "about-h4":"About",
-    "about-content": "About content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "features-h4": "Features",
+    "features-content":
+      "Features content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "about-h4": "About",
+    "about-content":
+      "About content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
     "middle-img-src": "img/mid-page-accent.jpg",
-    "services-h4":"Services",
-    "services-content": "Services content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "product-h4":"Product",
-    "product-content": "Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "vision-h4":"Vision",
-    "vision-content": "Vision content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "services-h4": "Services",
+    "services-content":
+      "Services content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "product-h4": "Product",
+    "product-content":
+      "Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "vision-h4": "Vision",
+    "vision-content":
+      "Vision content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis."
   },
-  "contact": {
-    "contact-h4" : "Contact",
-    "address" : "123 Way 456 Street Somewhere, USA",
-    "phone" : "1 (888) 888-8888",
-    "email" : "sales@greatidea.io",
+  contact: {
+    "contact-h4": "Contact",
+    address: "123 Way 456 Street Somewhere, USA",
+    phone: "1 (888) 888-8888",
+    email: "sales@greatidea.io"
   },
-  "footer": {
-    "copyright" : "Copyright Great Idea! 2018"
-  },
+  footer: {
+    copyright: "Copyright Great Idea! 2018"
+  }
 };
+
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
 // Update link text
-const navText = ["Services", "Product", "Vision", "Features", "About", "Contact"]
-
 const navLinks = document.querySelectorAll("a");
 navLinks.forEach(function(link, index) {
-  link.textContent = navText[index]
-})
+  link.textContent = siteContent.nav[`nav-item-${index + 1}`];
+});
 
 const headerOne = document.getElementsByTagName("h1");
-console.log(headerOne)
-headerOne[0].textContent = "DOM Is Awesome"
+const headerText = headerOne[0];
+const br = document.createElement("br");
+headerText.textContent = siteContent.cta.h1;
 
 const btn = document.getElementsByTagName("button");
-btn[0].textContent = "Get Started"
+btn[0].textContent = siteContent.cta.button;
 
 const headerImg = document.getElementById("cta-img");
-headerImg.src = "img/header-img.png"
+headerImg.src = siteContent.cta["img-src"];
+
+// const bodyKeys = Object.keys(siteContent["main-content"])
+const bodyText = document.getElementsByClassName("main-content");
+console.log(bodyText[0])
+bodyArr = Array.from(bodyText)
+console.log(bodyArr)
+
+const contact = document.getElementsByClassName("contact");
+contactArr = Array.from(contact[0].children)
+// console.log(contactArr)
+const contactKeys = Object.keys(siteContent["contact"])
+// console.log(contactKeys)
+contactArr.forEach(function(text, index) {
+  text.textContent = siteContent.contact[contactKeys[index]]
+})
+
+const footer = document.querySelector("footer");
+footer.children[0].textContent = siteContent.footer.copyright
