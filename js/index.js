@@ -52,6 +52,7 @@ const navLinks = document.querySelectorAll("a");
 navLinks.forEach(function(link, index) {
   link.textContent = siteContent.nav[`nav-item-${index + 1}`];
 });
+navLinks.forEach(link => link.style.color = "green")
 
 const headerOne = document.getElementsByTagName("h1");
 const headerText = headerOne[0];
@@ -64,11 +65,32 @@ btn[0].textContent = siteContent.cta.button;
 const headerImg = document.getElementById("cta-img");
 headerImg.src = siteContent.cta["img-src"];
 
-// const bodyKeys = Object.keys(siteContent["main-content"])
-const bodyText = document.getElementsByClassName("main-content");
-console.log(bodyText[0])
-bodyArr = Array.from(bodyText)
-console.log(bodyArr)
+const mainKeys = Object.keys(siteContent["main-content"])
+const mainTop = document.getElementsByClassName("top-content");
+let mainArr = []
+mainArr.push(mainTop[0].children[0].children[0])
+mainArr.push(mainTop[0].children[0].children[1])
+mainArr.push(mainTop[0].children[1].children[0])
+mainArr.push(mainTop[0].children[1].children[1])
+
+mainArr.push(document.getElementById("middle-img"))
+
+const mainBottom = document.getElementsByClassName("bottom-content");
+
+mainArr.push(mainBottom[0].children[0].children[0])
+mainArr.push(mainBottom[0].children[0].children[1])
+mainArr.push(mainBottom[0].children[1].children[0])
+mainArr.push(mainBottom[0].children[1].children[1])
+mainArr.push(mainBottom[0].children[2].children[0])
+mainArr.push(mainBottom[0].children[2].children[1])
+
+console.log(mainArr)
+
+mainArr.forEach(function(content, index) {
+  content.textContent = siteContent["main-content"][mainKeys[index]]
+})
+
+document.getElementById("middle-img").src = "img/mid-page-accent.jpg"
 
 const contact = document.getElementsByClassName("contact");
 contactArr = Array.from(contact[0].children)
