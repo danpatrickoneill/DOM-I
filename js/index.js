@@ -71,8 +71,14 @@ newLinks.forEach(link => link.style.color = "green")
 
 const headerOne = document.getElementsByTagName("h1");
 const headerText = headerOne[0];
-const br = document.createElement("br");
-headerText.textContent = siteContent.cta.h1;
+const linebreak = document.createElement("br");
+const linebreak2 = document.createElement("br");
+headerText.textContent = siteContent.cta.h1.slice(0, 3);
+// headerText.textContent = "DOM";
+headerText.appendChild(linebreak)
+headerText.appendChild(document.createTextNode(siteContent.cta.h1.slice(4, 6)))
+headerText.appendChild(linebreak2)
+headerText.appendChild(document.createTextNode(siteContent.cta.h1.slice(7, 14)))
 
 const btn = document.getElementsByTagName("button");
 btn[0].textContent = siteContent.cta.button;
@@ -107,14 +113,24 @@ mainArr.forEach(function(content, index) {
 
 document.getElementById("middle-img").src = "img/mid-page-accent.jpg"
 
+const mainStuff = document.querySelectorAll(".main-content");
+console.log(mainStuff)
+mainStuff.forEach(thing => console.log(thing))
+
 const contact = document.getElementsByClassName("contact");
 contactArr = Array.from(contact[0].children)
-// console.log(contactArr)
+console.log(contactArr)
 const contactKeys = Object.keys(siteContent["contact"])
 // console.log(contactKeys)
 contactArr.forEach(function(text, index) {
   text.textContent = siteContent.contact[contactKeys[index]]
 })
+
+const linebreak3 = document.createElement("br");
+contactArr[1].textContent = siteContent.contact.address.slice(0, 18);
+// headerText.textContent = "DOM";contactArr[1].textContent = siteContent.contact.address.slice(0, 25);
+contactArr[1].appendChild(linebreak3)
+contactArr[1].appendChild(document.createTextNode(siteContent.contact.address.slice(19, 33)))
 
 const footer = document.querySelector("footer");
 footer.children[0].textContent = siteContent.footer.copyright
